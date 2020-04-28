@@ -58,7 +58,8 @@ def clone_git_repo_and_store_path_in_database(git_repo_address, database, local_
     :return:                            {Dictionary}    {'success':True} if everything worked, {'success':False} otherwise
     """
     try:
-        controller = Controller(git_repo_address, Path(os.path.dirname(os.path.abspath(__file__)) + os.getenv(local_repo_path_env_string)))
+        controller = Controller(git_repo_address,
+                                Path(os.path.dirname(os.path.abspath(__file__)) + os.getenv(local_repo_path_env_string)))
         controller.create_git_repo()
     except (git.exc.GitCommandError, TypeError):
         # recreate lost gitclone folder
